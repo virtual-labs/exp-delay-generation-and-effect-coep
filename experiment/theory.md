@@ -10,11 +10,11 @@ A microcontroller is made of several registers. Some used for general purpose, a
 
 In this experiment, we will use a special kind of SFR inside PIC18f4550 known as OSCCON.
 
-The OSCCON register controls several aspects of the device clock’s operation, both in full-power operation and in power-managed modes.
+The OSCCON register controls several aspects of the device clock's operation, both in full-power operation and in power-managed modes.
 
 ### OSCCON: OSCILLATOR CONTROL REGISTER
 
-![8](images/LEC_Puch_button_sinking1.png)
+![8](images/OSCCON.png)
 
 ![*](images/table1.png)
 
