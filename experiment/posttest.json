@@ -2,38 +2,82 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the relationship between the CPU clock speed and the power consumption of the microcontroller?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "The higher the clock speed, the higher the power consumption",
+        "b": "The lower the clock speed, the higher the power consumption",
+        "c": "The power consumption remains constant regardless of the clock speed",
+        "d": "The power consumption is not affected by the clock speed"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
+     
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "What is the maximum clock speed of the PIC18 series microcontroller?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "64 MHz",
+        "b": "8 MHz",
+        "c": "32 MHz",
+        "d": "16 MHz"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "What is the function of a crystal oscillator in a microcontroller?",
+      "answers": {
+        "a": "To provide a stable clock signal for the microcontroller",
+        "b": "To provide power to the microcontroller",
+        "c": "To store data in the microcontroller",
+        "d": "To regulate the temperature of the microcontroller"
       },
+     
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "Which of the following is not a factor that affects the performance of a microcontroller?",
+      "answers": {
+        "a": "CPU clock speed",
+        "b": "Amount of RAM",
+        "c": "Type of peripherals",
+        "d": "Amount of program memory"
+      },
+     
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "What is the main advantage of using a microcontroller with a higher clock speed?",
+      "answers": {
+        "a": "It can execute instructions more quickly",
+        "b": "It can store more data",
+        "c": "It can consume less power",
+        "d": "It can support more peripherals"
+      },
+     
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "How will you measure the effect of CPU clock speed on microcontroller operations?",
+      "answers": {
+        "a": "By measuring the power consumption of the microcontroller",
+        "b": "By measuring the size of the microcontroller",
+        "c": "By measuring the time it takes for the microcontroller to execute instructions",
+        "d": "By measuring the number of peripherals that can be connected to the microcontroller"
+      },
+     
       "correctAnswer": "c",
       "difficulty": "beginner"
     }
+	
+	
   ]
 }
