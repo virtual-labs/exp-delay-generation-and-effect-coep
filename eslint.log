@@ -1,0 +1,19 @@
+
+/home/runner/work/exp-delay-generation-and-effect-coep/exp-delay-generation-and-effect-coep/experiment/simulation/script.js
+    8:10  warning  'generateCode' is defined but never used      no-unused-vars
+   82:10  warning  'showcompilemsg' is defined but never used    no-unused-vars
+   98:26  warning  'event' is defined but never used             no-unused-vars
+  136:10  warning  'showSavedMessage' is defined but never used  no-unused-vars
+  153:26  warning  'event' is defined but never used             no-unused-vars
+  169:26  warning  'event' is defined but never used             no-unused-vars
+  236:10  warning  'reset' is defined but never used             no-unused-vars
+  237:5   warning  'Plotly' is not defined                       no-undef
+  239:11  warning  'time' is assigned a value but never used     no-unused-vars
+  253:3   warning  'Plotly' is not defined                       no-undef
+  255:12  warning  'start' is defined but never used             no-unused-vars
+  266:3   warning  'Plotly' is not defined                       no-undef
+  268:5   warning  'Plotly' is not defined                       no-undef
+  275:1   warning  'start_e' is not defined                      no-undef
+
+✖ 14 problems (0 errors, 14 warnings)
+
