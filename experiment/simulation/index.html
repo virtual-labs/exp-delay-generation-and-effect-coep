@@ -351,7 +351,7 @@ function generateCode() {
 
 document.getElementById("compile-btn").addEventListener("click", async () => {
   let filename = (document.getElementById("code_1").value + document.getElementById("code").value + document.getElementById("code_2").value) || "experiment_2";
-  const response = await fetch("http://192.168.1.45:8081/compile1", {
+  const response = await fetch("http://14.139.123.181:8081/compile1", {
     method: "POST",
     headers: {
       'Access-Control-Allow-Headers': '*',
@@ -387,7 +387,7 @@ function showcompilemsg() {
 
 document.getElementById("execute-btn").addEventListener("click", async () => {
   var req = new XMLHttpRequest();
-  req.open("GET", "http://192.168.1.45:8081/execute1", true);
+  req.open("GET", "http://14.139.123.181:8081/execute1", true);
   req.responseType = "";
   req.onload = function (event) {
     if (req.status != 200) return;
@@ -442,7 +442,7 @@ function showSavedMessage() {
 
 document.getElementById("download-code-btn").addEventListener("click", async () => {
   var req = new XMLHttpRequest();
-  req.open("GET", "http://192.168.1.45:8081/download1", true);
+  req.open("GET", "http://14.139.123.181:8081/download1", true);
   req.responseType = "blob";
   req.onload = function (event) {
     if (req.status != 200) return;
@@ -458,7 +458,7 @@ document.getElementById("download-code-btn").addEventListener("click", async () 
 
 document.getElementById("download-op-btn").addEventListener("click", async () => {
   var req = new XMLHttpRequest();
-  req.open("GET", "http://192.168.1.45:8081/HEX1", true);
+  req.open("GET", "http://14.139.123.181:8081/HEX1", true);
   req.responseType = "blob";
   req.onload = function (event) {
     if (req.status != 200) return;
