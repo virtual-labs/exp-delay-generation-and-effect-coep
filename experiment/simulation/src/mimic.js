@@ -132,16 +132,18 @@ resetimg.click(function(){
 })
 
 
-
- 
-
+var crossCheckConnect=false;
 var cathodFlag=0;
 cathode.click(function(){
 	cathodFlag=1;
 	console.log("cathodFlag"+cathodFlag);
 	var cathode_connection_arr=[];	
-	if (diodSelection==0){
-		if(RcircleFlag==1){		
+	if(verifyRcircleConnect==true){
+		alert("Already Connected.");
+	}else{
+		if (diodSelection==0){
+		if(RcircleFlag==1){	
+//			crossCheckConnect=true;	
 			cathode_connection_arr[0]=paper.path("M "+(x+360)+" "+(y-18.5)+ "l 0 0").attr({'stroke-width':3});			
 			cathode_connection_arr[0].animate({path :"M"+(x+360)+" "+(y-18.5)+"l -30 -1   "},1000, function(){
 			
@@ -153,7 +155,7 @@ cathode.click(function(){
 			
 			cathode_connection_arr[0]=paper.path("M "+(x+168)+" "+(y-68.5)+ "l 0 0").attr({'stroke-width':3});
 			cathode_connection_arr[0].animate({path :"M"+(x+168)+" "+(y-68.5)+"l 0 46"},1000, function(){
-	
+				crossCheckConnect=true;	
 			});
 			});
 			});	
@@ -163,44 +165,52 @@ cathode.click(function(){
 		if(RcircleFlag==1){		
 			cathode_connection_arr[0]=paper.path("M "+(x+360)+" "+(y-18.5)+ "l 0 0").attr({'stroke-width':3});			
 			cathode_connection_arr[0].animate({path :"M"+(x+360)+" "+(y-18.5)+"l -73 -1 "},1000, function(){
-			console.log("cathode.click...... cathodFlag="+cathodFlag+", RcircleFlag ="+RcircleFlag);
-		
+//			console.log("cathode.click...... cathodFlag="+cathodFlag+", RcircleFlag ="+RcircleFlag);
+			crossCheckConnect=true;	
 			});	
 		}
 	}
+	}
 })
 
+var verifyRcircleConnect=false;
 var RcircleFlag=0;
 Rcircle.click(function(){
 	RcircleFlag=1;
 	console.log("RcircleFlag"+RcircleFlag);
 	var cathode_connection_arr=[];	
-	if (diodSelection==0){
-		if(cathodFlag==1){	
-			
-			cathode_connection_arr[0]=paper.path("M "+(x+168)+" "+(y-23.5)+ "l 0 0").attr({'stroke-width':3});
-			cathode_connection_arr[0].animate({path :"M"+(x+168)+" "+(y-23.5)+"l 0 -46"},1000, function(){
-					
-			cathode_connection_arr[0]=paper.path("M "+(x+168)+" "+(y-68.5)+ "l 0 0").attr({'stroke-width':3});
-			cathode_connection_arr[0].animate({path :"M"+(x+168)+" "+(y-68.5)+"l 164 0"},1000, function(){
-			
-			cathode_connection_arr[0]=paper.path("M "+(x+331)+" "+(y-68.5)+ "l 0 0").attr({'stroke-width':3});
-			cathode_connection_arr[0].animate({path :"M"+(x+331)+" "+(y-68.5)+" l 0 50 "},1000, function(){
-				
-			cathode_connection_arr[0]=paper.path("M "+(x+330)+" "+(y-18.5)+ "l 0 0").attr({'stroke-width':3});			
-			cathode_connection_arr[0].animate({path :"M"+(x+330)+" "+(y-18.5)+"l 30 1   "},1000, function(){
-			
-			});
-			});
-			});	
-			});	
-		}
+
+	if( crossCheckConnect==true){
+		alert("Already Connected.");
 	}else{
-		if(cathodFlag==1){
-			console.log("Rcircle Click ....RcircleFlag="+RcircleFlag+" , cathodFlag="+cathodFlag);
-			cathode_connection_arr[0]=paper.path("M "+(x+287)+" "+(y-18.5)+ "l 0 0").attr({'stroke-width':3});			
-			cathode_connection_arr[0].animate({path :"M"+(x+287)+" "+(y-18.5)+"l 73 1 "},1000, function(){
-			});
+		if (diodSelection==0){
+			if(cathodFlag==1){	
+				
+				cathode_connection_arr[0]=paper.path("M "+(x+168)+" "+(y-23.5)+ "l 0 0").attr({'stroke-width':3});
+				cathode_connection_arr[0].animate({path :"M"+(x+168)+" "+(y-23.5)+"l 0 -46"},1000, function(){
+						
+				cathode_connection_arr[0]=paper.path("M "+(x+168)+" "+(y-68.5)+ "l 0 0").attr({'stroke-width':3});
+				cathode_connection_arr[0].animate({path :"M"+(x+168)+" "+(y-68.5)+"l 164 0"},1000, function(){
+				
+				cathode_connection_arr[0]=paper.path("M "+(x+331)+" "+(y-68.5)+ "l 0 0").attr({'stroke-width':3});
+				cathode_connection_arr[0].animate({path :"M"+(x+331)+" "+(y-68.5)+" l 0 50 "},1000, function(){
+					
+				cathode_connection_arr[0]=paper.path("M "+(x+330)+" "+(y-18.5)+ "l 0 0").attr({'stroke-width':3});			
+				cathode_connection_arr[0].animate({path :"M"+(x+330)+" "+(y-18.5)+"l 30 1   "},1000, function(){
+				verifyRcircleConnect=true;
+				});
+				});
+				});	
+				});	
+			}
+		}else{
+			if(cathodFlag==1){
+	//			console.log("Rcircle Click ....RcircleFlag="+RcircleFlag+" , cathodFlag="+cathodFlag);
+				cathode_connection_arr[0]=paper.path("M "+(x+287)+" "+(y-18.5)+ "l 0 0").attr({'stroke-width':3});			
+				cathode_connection_arr[0].animate({path :"M"+(x+287)+" "+(y-18.5)+"l 73 1 "},1000, function(){
+					verifyRcircleConnect=true;
+				});
+			}
 		}
 	}
 
@@ -270,88 +280,112 @@ var checkflag6=0;
 var checkflag7=0;
 var checkflag8=0;
 
+var vfyRD0Connect=false;
+var vfyRD1Connect=false;
+var vfyRD2Connect=false;
+var vfyRD3Connect=false;
+var vfyRD4Connect=false;
+var vfyRD5Connect=false;
+var vfyRD6Connect=false; 
+var vfyRD7Connect=false;
+
 terminalRD0.click(function(){
 d0Flag=1;
+checkflag1=1;
 //	d0Flag=1;
-if (diodSelection==0){
-		if(checkflag2==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
-				alert("Click on 'Check Connection' Button.");
-			}else if(anodeflg==1){
-				anode_connection_arr2[0]=paper.path("M "+(x+283)+" "+(y-15)+ "l 0 0").attr({'stroke-width':3});			
-				anode_connection_arr2[0].animate({path :"M"+(x+283)+" "+(y-15)+"l 0 40 "},500, function(){
-				
-				anode_connection_arr2[0]=paper.path("M "+(x+284)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-				anode_connection_arr2[0].animate({path :"M"+(x+284)+" "+(y+25)+"l -127 0 "},500, function(){
-						
-				anode_connection_arr2[0]=paper.path("M "+(x+158)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});
-				anode_connection_arr2[0].animate({path :"M"+(x+158)+" "+(y+25)+" l 0 33"},1000, function(){
-						
-					pinName=1;
-					checkflag1=1;
-				});	
-				});
-				});
-		}
-	
-}else{
-		if(checkflag2==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
-			alert("Click on 'Check Connection' Button.");
-		}else if(anodeflg==1){
-			anode_connection_arr2[0]=paper.path("M "+(x+164)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});			
-			anode_connection_arr2[0].animate({path :"M"+(x+164)+" "+(y-19)+"l -7.2 0 "},500, function(){
+	if(verifyAconnect==true){
+		alert("Already Connected.");
+	}else{
+		if (diodSelection==0){
+			if(checkflag2==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
+					alert("Click on 'Check Connection' Button.");
+				}else if(anodeflg==1){
+					anode_connection_arr2[0]=paper.path("M "+(x+283)+" "+(y-15)+ "l 0 0").attr({'stroke-width':3});			
+					anode_connection_arr2[0].animate({path :"M"+(x+283)+" "+(y-15)+"l 0 40 "},500, function(){
 					
-			anode_connection_arr2[0]=paper.path("M "+(x+158)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-			anode_connection_arr2[0].animate({path :"M"+(x+158)+" "+(y-19)+" l 0 76"},1000, function(){
-					
-				pinName=1;
-				checkflag1=1;
-			});	
-			});
+					anode_connection_arr2[0]=paper.path("M "+(x+284)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+					anode_connection_arr2[0].animate({path :"M"+(x+284)+" "+(y+25)+"l -127 0 "},500, function(){
+							
+					anode_connection_arr2[0]=paper.path("M "+(x+158)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});
+					anode_connection_arr2[0].animate({path :"M"+(x+158)+" "+(y+25)+" l 0 33"},1000, function(){
+						vfyRD0Connect=true;	
+						pinName=1;
+						checkflag1=1;
+					});	
+					});
+					});
+			}
+		
+		}else{
+					if(checkflag2==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
+						alert("Click on 'Check Connection' Button.");
+					}else if(anodeflg==1){
+						anode_connection_arr2[0]=paper.path("M "+(x+164)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});			
+						anode_connection_arr2[0].animate({path :"M"+(x+164)+" "+(y-19)+"l -7.2 0 "},500, function(){
+								
+						anode_connection_arr2[0]=paper.path("M "+(x+158)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+						anode_connection_arr2[0].animate({path :"M"+(x+158)+" "+(y-19)+" l 0 76"},1000, function(){
+							vfyRD0Connect=true;	
+							pinName=1;
+							checkflag1=1;
+						});	
+						});
+					}
 		}
 }
 })
 
 terminalRD1.click(function(){
 d1Flag=1;
-	if (diodSelection==0){
-		if(checkflag1==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
-		alert("Click on 'Check Connection' Button.");
+checkflag2=1;
+	if(verifyAconnect==true){
+			alert("Already Connected.");
+	}else{
+		if (diodSelection==0){
+			if(checkflag1==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
+					alert("Click on 'Check Connection' Button.");
 			}else if(anodeflg==1){
-				anode_connection_arr2[0]=paper.path("M "+(x+283)+" "+(y-15)+ "l 0 0").attr({'stroke-width':3});			
-				anode_connection_arr2[0].animate({path :"M"+(x+283)+" "+(y-15)+"l 0 40 "},500, function(){
+					anode_connection_arr2[0]=paper.path("M "+(x+283)+" "+(y-15)+ "l 0 0").attr({'stroke-width':3});			
+					anode_connection_arr2[0].animate({path :"M"+(x+283)+" "+(y-15)+"l 0 40 "},500, function(){
+					
+					anode_connection_arr2[0]=paper.path("M "+(x+284)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+					anode_connection_arr2[0].animate({path :"M"+(x+284)+" "+(y+25)+"l -143 0 "},500, function(){
+							
+					anode_connection_arr2[0]=paper.path("M "+(x+142)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});
+					anode_connection_arr2[0].animate({path :"M"+(x+142)+" "+(y+25)+" l 0 33"},1000, function(){
+						vfyRD1Connect=true;	
+						pinName=2;
+						//checkflag2=1;
+					});	
+					});
+					});
+			}
+		}else{
+			if(checkflag1==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
+				alert("Click on 'Check Connection' Button.");		
+			}else if(anodeflg==1){			
+				anode_connection_arr2[0]=paper.path("M "+(x+164)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr2[0].animate({path :"M"+(x+164)+" "+(y-19)+"l -23 0 "},500, function(){
 				
-				anode_connection_arr2[0]=paper.path("M "+(x+284)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-				anode_connection_arr2[0].animate({path :"M"+(x+284)+" "+(y+25)+"l -143 0 "},500, function(){
-						
-				anode_connection_arr2[0]=paper.path("M "+(x+142)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});
-				anode_connection_arr2[0].animate({path :"M"+(x+142)+" "+(y+25)+" l 0 33"},1000, function(){
-						
+				anode_connection_arr2[0]=paper.path("M "+(x+142)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr2[0].animate({path :"M"+(x+142)+" "+(y-19)+" l 0 76"},1000, function(){
+					vfyRD1Connect=true;
 					pinName=2;
-					checkflag1=1;
+	//				checkflag2=1;
+		//			d1Flag=1;
 				});	
 				});
-				});
-		}
-	}else{
-		if(checkflag1==1 || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
-			alert("Click on 'Check Connection' Button.");		
-		}else if(anodeflg==1){			
-			anode_connection_arr2[0]=paper.path("M "+(x+164)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});			
-			anode_connection_arr2[0].animate({path :"M"+(x+164)+" "+(y-19)+"l -23 0 "},500, function(){
-			
-			anode_connection_arr2[0]=paper.path("M "+(x+142)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-			anode_connection_arr2[0].animate({path :"M"+(x+142)+" "+(y-19)+" l 0 76"},1000, function(){
-				pinName=2;
-				checkflag2=1;
-	//			d1Flag=1;
-			});	
-			});
+			}
 		}
 	}
 })
 
 terminalRD2.click(function(){
 d2Flag=1;
+checkflag3=1;
+if(verifyAconnect==true){
+		alert("Already Connected.");
+}else{
 	if (diodSelection==0){
 		if(checkflag1==1 || checkflag2==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
 				alert("Click on 'Check Connection' Button.");
@@ -364,9 +398,9 @@ d2Flag=1;
 						
 				anode_connection_arr2[0]=paper.path("M "+(x+127)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+127)+" "+(y+25)+" l 0 33"},1000, function(){
-						
+					vfyRD2Connect=true;	
 					pinName=3;
-			checkflag3=1;
+//					checkflag3=1;
 				});	
 				});
 				});
@@ -381,19 +415,24 @@ d2Flag=1;
 				
 				anode_connection_arr2[0]=paper.path("M "+(x+127)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+127)+" "+(y-19)+" l 0 76"},1000, function(){
+					vfyRD2Connect=true;
 					pinName=3;
-			checkflag3=1;
+//					checkflag3=1;
 		//	d2Flag=1;
 				});	
 				});
 			}
 	}
+}
 })
 
 terminalRD3.click(function(){
 //	pinName=4;
-//	checkflag4=1;
+	checkflag4=1;
 	d3Flag=1;
+if(verifyAconnect==true){
+		alert("Already Connected.");
+}else{
 	if (diodSelection==0){
 			if(checkflag1==1 ||  checkflag2==1  || checkflag3==1 || checkflag5==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
 				alert("Click on 'Check Connection' Button.");		
@@ -406,9 +445,9 @@ terminalRD3.click(function(){
 						
 				anode_connection_arr2[0]=paper.path("M "+(x+111)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+111)+" "+(y+25)+" l 0 33"},1000, function(){
-						
+				vfyRD3Connect=true;
 					pinName=4;
-					checkflag4=1;
+//					checkflag4=1;
 				});	
 				});
 				});
@@ -424,19 +463,24 @@ terminalRD3.click(function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x+111)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+111)+" "+(y-19)+" l 0 76"},1000, function(){
+					vfyRD3Connect=true;	
 					pinName=4;
-					checkflag4=1;
+//					checkflag4=1;
 					//	d3Flag=1;
 				});	
 				});
 			}	
 	}
+}
 })
 
 terminalRD4.click(function(){
 //	pinName=5;
-//	checkflag5=1;
+	checkflag5=1;
 	d4Flag=1;
+if(verifyAconnect==true){
+		alert("Already Connected.");
+}else{	
 	if (diodSelection==0){
 			if(checkflag1==1 ||  checkflag2==1  || checkflag3==1 || checkflag4==1 || checkflag6==1 || checkflag7==1 || checkflag8==1){
 				alert("Click on 'Check Connection' Button.");		
@@ -452,9 +496,9 @@ terminalRD4.click(function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x+10)+" "+(y+116)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+10)+" "+(y+116)+" l 15 0"},1000, function(){
-							
+					vfyRD4Connect=true;	
 					pinName=5;
-					checkflag5=1;
+//					checkflag5=1;
 				});
 				});	
 				});
@@ -472,19 +516,25 @@ terminalRD4.click(function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x-6)+" "+(y+116)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x-6)+" "+(y+116)+" l 30 0"},1000, function(){
+					vfyRD4Connect=true;
 					pinName=5;
-					checkflag5=1;
+//					checkflag5=1;
 					//	d4Flag=1;
 				});	
 				});	
 				});		
 			}
 	}
-})
+}
+});
+
 terminalRD5.click(function(){
 //	pinName=6;
-//	checkflag6=1;
+	checkflag6=1;
 	d5Flag=1;
+if(verifyAconnect==true){
+		alert("Already Connected.");
+}else{
 	if (diodSelection==0){
 		if(checkflag1==1 ||  checkflag2==1  || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag7==1 || checkflag8==1){
 				alert("Click on 'Check Connection' Button.");		
@@ -499,10 +549,10 @@ terminalRD5.click(function(){
 				anode_connection_arr2[0].animate({path :"M"+(x+10)+" "+(y+25)+" l 0 106"},1000, function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x+10)+" "+(y+130)+ "l 0 0").attr({'stroke-width':3});
-				anode_connection_arr2[0].animate({path :"M"+(x+10)+" "+(y+130)+" l 15 0"},1000, function(){
-							
+				anode_connection_arr2[0].animate({path :"M"+(x+10)+" "+(y+130)+" l 15 0"},1000, function(){					
+					vfyRD5Connect=true;	
 					pinName=6;
-					checkflag6=1;
+//					checkflag6=1;
 				});
 				});	
 				});
@@ -519,23 +569,27 @@ terminalRD5.click(function(){
 				anode_connection_arr2[0].animate({path :"M"+(x-6)+" "+(y-19)+" l 0 150.2"},1000, function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x-6)+" "+(y+130)+ "l 0 0").attr({'stroke-width':3});
-				anode_connection_arr2[0].animate({path :"M"+(x-6)+" "+(y+130)+" l 30 0"},1000, function(){
+				anode_connection_arr2[0].animate({path :"M"+(x-6)+" "+(y+130)+" l 30 0"},1000, function(){					
+					vfyRD5Connect=true;
 					pinName=6;
-					checkflag6=1;
+//					checkflag6=1;
 				//	d5Flag=1;
 				});	
 				});	
 				});
 		}
 	}
-	
+}	
 	
 })
 
 terminalRD6.click(function(){
 //	pinName=7;
-//	checkflag7=1;
+	checkflag7=1;
 	d6Flag=1;
+if(verifyAconnect==true){
+		alert("Already Connected.");
+}else{	
 	if (diodSelection==0){
 		if(checkflag1==1 ||  checkflag2==1  || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag8==1){
 			alert("Click on 'Check Connection' Button.");		
@@ -551,9 +605,9 @@ terminalRD6.click(function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x+10)+" "+(y+144)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+10)+" "+(y+144)+" l 15 0"},1000, function(){
-							
+					vfyRD6Connect=true; 
 					pinName=7;
-					checkflag7=1;
+//					checkflag7=1;
 				});
 				});	
 				});
@@ -571,20 +625,24 @@ terminalRD6.click(function(){
 				
 				anode_connection_arr2[0]=paper.path("M "+(x-6)+" "+(y+144)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x-6)+" "+(y+144)+" l 30 0"},1000, function(){
+					vfyRD6Connect=true; 
 					pinName=7;
-					checkflag7=1;
+//					checkflag7=1;
 					//	d6Flag=1;
 				});	
 				});	
 				});	
 			}
 	}
-	
+}	
 })
 terminalRD7.click(function(){
 //	pinName=8;
-//	checkflag8=1;
+	checkflag8=1;
 d7Flag=1;
+if(verifyAconnect==true){
+		alert("Already Connected.");
+}else{
 	if (diodSelection==0){
 		if(checkflag1==1 ||  checkflag2==1  || checkflag3==1 || checkflag4==1 || checkflag5==1 || checkflag6==1 || checkflag7==1){
 				alert("Click on 'Check Connection' Button.");		
@@ -600,9 +658,9 @@ d7Flag=1;
 				
 				anode_connection_arr2[0]=paper.path("M "+(x+10)+" "+(y+156)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x+10)+" "+(y+156)+" l 15 0"},1000, function(){
-							
+					vfyRD7Connect=true;		
 					pinName=8;
-					checkflag8=1;
+//					checkflag8=1;
 				});
 				});	
 				});
@@ -620,8 +678,9 @@ d7Flag=1;
 				
 				anode_connection_arr2[0]=paper.path("M "+(x-6)+" "+(y+156)+ "l 0 0").attr({'stroke-width':3});
 				anode_connection_arr2[0].animate({path :"M"+(x-6)+" "+(y+156)+" l 30 0"},1000, function(){
+					vfyRD7Connect=true;	
 					pinName=8;
-					checkflag8=1;
+//					checkflag8=1;
 					//	d7Flag=1;
 				});	
 				});	
@@ -629,10 +688,10 @@ d7Flag=1;
 		}
 	}
 	
-	
-})
+}	
+});
 
-
+var verifyAconnect=false;
 
 
 anode.click(function(){
@@ -646,7 +705,7 @@ anode.click(function(){
 		TtoAconnection();
 	}
 	
-})
+});
 
 var statusFlag=false;
 checkStatus.click(function(){
@@ -674,8 +733,7 @@ function toggleVisibility() {
 //	setTimeout(function() {Ledcircle.attr({opacity: 0});},OFF_dlyVal);
 //	setTimeout(function() {Ledcircle.attr({opacity: 1, fill:'red'});},(ON_dlyVal+OFF_dlyVal));
 		
-		
-  }
+}
 
 runimg.click(function(){
 	if(statusFlag==true){
@@ -689,150 +747,6 @@ runimg.click(function(){
 		alert("Please Check Connection Status.");
 	}
 })
-
-
-function TtoAconnectionforRDiod2(){
-	var anode_connection_arr1=[];
-	if(anodeflg==1 && d0Flag==1){
-		//pin1
-		anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y+57)+" l 0 -33"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y+25)+"l 127 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){	
-						
-		pinName=1;
-		});	
-		});
-		});
-			
-	}else if(anodeflg==1 && d1Flag==1){
-		//pin2
-		anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y+57)+" l 0 -33"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y+25)+"l 142 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-		
-		pinName=2;	
-		});
-		});	
-		});
-	}else if(anodeflg==1 && d2Flag==1){
-		//pin3
-		anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y+57)+" l 0 -33"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y+25)+"l 157 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-		pinName=3;	
-		});
-		});	
-		});
-	}else if(anodeflg==1 && d3Flag==1){
-		//pin4
-		anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y+57)+" l 0 -33"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y+25)+"l 173 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-		pinName=4;
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d4Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+116)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+116)+" l -15 0"},1000, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+117)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+117)+" l 0 -93"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 275 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-	
-		pinName=5;
-		});	
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d5Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+130)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+130)+" l -15 0"},1000, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+131)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+131)+" l 0 -107.2"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 274 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-		pinName=6;	
-		});
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d6Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+144)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+144)+" l -15 0"},1000, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+145)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+145)+" l 0 -122.2"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 274 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-		pinName=7;	
-		});
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d7Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+157)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+157)+" l -15 0"},1000, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+158)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+158)+" l 0 -135"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 274 0 "},500, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
-		pinName=8;	
-		});
-		});	
-		});	
-		});
-	}else{
-//		alert("Wrong Connection.Please Try Again");
-	}
-	
-}
-
-
-
-
-
-
-
 
 function createPopup(x, y, message) {
     // Draw rectangle
@@ -861,110 +775,264 @@ function createPopup(x, y, message) {
     return popup;
 }
 
+function TtoAconnectionforRDiod2(){
+	var anode_connection_arr1=[];
+	if(vfyRD0Connect==true || vfyRD1Connect==true || vfyRD2Connect==true || vfyRD3Connect==true || vfyRD4Connect==true || vfyRD5Connect==true || vfyRD6Connect==true || vfyRD7Connect==true){
+		alert("Already Connected.");
+	}else{
+			if(anodeflg==1 && d0Flag==1 ){
+				//pin1
+				anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y+57)+" l 0 -33"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y+25)+"l 127 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){	
+				verifyAconnect=true;				
+				pinName=1;
+				});	
+				});
+				});
+					
+			}else if(anodeflg==1 && d1Flag==1){
+				//pin2
+				anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y+57)+" l 0 -33"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y+25)+"l 142 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=2;	
+				});
+				});	
+				});
+			}else if(anodeflg==1 && d2Flag==1){
+				//pin3
+				anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y+57)+" l 0 -33"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y+25)+"l 157 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=3;	
+				});
+				});	
+				});
+			}else if(anodeflg==1 && d3Flag==1){
+				//pin4
+				anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y+57)+" l 0 -33"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y+25)+"l 173 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=4;
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d4Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+116)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+116)+" l -15 0"},1000, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+117)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+117)+" l 0 -93"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 275 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=5;
+				});	
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d5Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+130)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+130)+" l -15 0"},1000, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+131)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+131)+" l 0 -107.2"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 274 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=6;	
+				});
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d6Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+144)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+144)+" l -15 0"},1000, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+145)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+145)+" l 0 -122.2"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 274 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=7;	
+				});
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d7Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+157)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+157)+" l -15 0"},1000, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+158)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+158)+" l 0 -135"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+10)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+10)+" "+(y+25)+"l 274 0 "},500, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+283)+" "+(y+25)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+283)+" "+(y+25)+"l 0 -40 "},500, function(){
+				verifyAconnect=true;
+				pinName=8;	
+				});
+				});	
+				});	
+				});
+			}else{
+		//		alert("Wrong Connection.Please Try Again");
+			}
+	}
+}
 
 //TtoAconnection();
 function TtoAconnection(){
 	
 	var anode_connection_arr1=[];
-	if(anodeflg==1 && d0Flag==1){
-		//pin1
-		anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y+58)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y+58)+" l 0 -77"},1000, function(){
-			
-		anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y-18)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y-18)+"l 7.2 0 "},500, function(){
-		pinName=1;
-		});	
-		});
-	
-	}else if(anodeflg==1 && d1Flag==1){
-		//pin2
-		anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y+57)+" l 0 -77.2"},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y-19)+"l 23 0 "},1000, function(){
-		pinName=2;	
-		});	
-		});
-	}else if(anodeflg==1 && d2Flag==1){
-		//pin3
-		anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y+57)+"l 0 -77.2  "},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y-19)+" l 38 0 "},1000, function(){
-		pinName=3;	
-		});	
-		});
-	}else if(anodeflg==1 && d3Flag==1){
-		//pin4
-		anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y+57)+"l 0 -77.2 "},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y-19)+" l 54 0 "},1000, function(){
-		pinName=4;	
-		});	
-		});
-	}else if(anodeflg==1 && d4Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+116)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+116)+"l -30 0 "},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+117)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+117)+" l 0 -136.2"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+"l 170 0  "},1000, function(){
-		pinName=5;	
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d5Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+130)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+130)+"l -30 0 "},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+131)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+131)+" l 0 -150.2"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+" l 170 0"},1000, function(){
-		pinName=6;	
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d6Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+144)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+144)+"l -30 0 "},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+145)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+145)+" l 0 -164.4"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+" l 170 0"},1000, function(){
-		pinName=7;	
-		});	
-		});	
-		});
-	}else if(anodeflg==1 && d7Flag==1){
-		anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+156)+ "l 0 0").attr({'stroke-width':3});			
-		anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+156)+"l -30 0  "},500, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+156)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+156)+" l 0 -176"},1000, function(){
-		
-		anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
-		anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+" l 170 0"},1000, function(){
-		pinName=8;	
-		});	
-		});	
-		});
+	if(vfyRD0Connect==true || vfyRD1Connect==true || vfyRD2Connect==true || vfyRD3Connect==true || vfyRD4Connect==true || vfyRD5Connect==true || vfyRD6Connect==true || vfyRD7Connect==true){
+		alert("Already Connected.");
 	}else{
-//		alert("Wrong Connection.Please Try Again");
-	}
+			
+			if(anodeflg==1 && d0Flag==1){
+				//pin1
+				anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y+58)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y+58)+" l 0 -77"},1000, function(){
+					
+				anode_connection_arr1[0]=paper.path("M "+(x+158)+" "+(y-18)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+158)+" "+(y-18)+"l 7.2 0 "},500, function(){
+					verifyAconnect=true;
+				pinName=1;
+				});	
+				});
+			
+			}else if(anodeflg==1 && d1Flag==1){
+				//pin2
+				anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y+57)+" l 0 -77.2"},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+142)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+142)+" "+(y-19)+"l 23 0 "},1000, function(){
+				verifyAconnect=true;
+				pinName=2;	
+				});	
+				});
+			}else if(anodeflg==1 && d2Flag==1){
+				//pin3
+				anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y+57)+"l 0 -77.2  "},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+127)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+127)+" "+(y-19)+" l 38 0 "},1000, function(){
+				verifyAconnect=true;
+				pinName=3;	
+				});	
+				});
+			}else if(anodeflg==1 && d3Flag==1){
+				//pin4
+				anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y+57)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y+57)+"l 0 -77.2 "},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x+111)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x+111)+" "+(y-19)+" l 54 0 "},1000, function(){
+				verifyAconnect=true;
+				pinName=4;	
+				});	
+				});
+			}else if(anodeflg==1 && d4Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+116)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+116)+"l -30 0 "},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+117)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+117)+" l 0 -136.2"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+"l 170 0  "},1000, function(){
+				verifyAconnect=true;
+				pinName=5;	
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d5Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+130)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+130)+"l -30 0 "},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+131)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+131)+" l 0 -150.2"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+" l 170 0"},1000, function(){
+				verifyAconnect=true;
+				pinName=6;	
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d6Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+144)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+144)+"l -30 0 "},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+145)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+145)+" l 0 -164.4"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+" l 170 0"},1000, function(){
+				verifyAconnect=true;
+				pinName=7;	
+				});	
+				});	
+				});
+			}else if(anodeflg==1 && d7Flag==1){
+				anode_connection_arr1[0]=paper.path("M "+(x+25)+" "+(y+156)+ "l 0 0").attr({'stroke-width':3});			
+				anode_connection_arr1[0].animate({path :"M"+(x+25)+" "+(y+156)+"l -30 0  "},500, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-4)+" "+(y+156)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-4)+" "+(y+156)+" l 0 -176"},1000, function(){
+				
+				anode_connection_arr1[0]=paper.path("M "+(x-5)+" "+(y-19)+ "l 0 0").attr({'stroke-width':3});
+				anode_connection_arr1[0].animate({path :"M"+(x-5)+" "+(y-19)+" l 170 0"},1000, function(){
+				verifyAconnect=true;
+				pinName=8;	
+				});	
+				});	
+				});
+			}else{
+		//		alert("Wrong Connection.Please Try Again");
+			}
+	 }
 }
-
-
 
 
 function AtoTconnection(){

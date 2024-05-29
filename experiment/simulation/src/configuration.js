@@ -2,11 +2,11 @@
 //function mainPage1(){
 	$("#main-div-conf").html('');	
      $("#canvas-div").html('');	
-     $("#canvas-div1").html('');
+//     $("#canvas-div1").html('');
       $("#centerText1").html('PIN DIAGRAM FOR PIC18F4550 MICROCONTROLLER');
       $("#centerText2").html('CONFIGURATION');
- 			var htm = '<center><img src="images/chipImg.png" class="img-fluid" style="width: 80%;" ></center>'
-	     $("#canvas-div1").html(htm);
+// 			var htm = '<center><img src="images/chipImg.png" class="img-fluid" style="width: 80%;" ></center>'
+//	     $("#canvas-div1").html(htm);
 	
  
 var selection = '<div class="row">'
