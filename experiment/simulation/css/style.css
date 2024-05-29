@@ -4,12 +4,21 @@
   padding: 10px;
   border: 1px solid #aaaaaa;
 }
+/* #modelTitle{ */
+/* 	background-color: #244f56; */
+/*     padding: 7px; */
+/*     color: #fff; */
+/*     font-size: 17px; */
+/*     margin:10px;} */
 #modelTitle{
-	background-color: #244f56;
+	background-color:#a4b5b9;
     padding: 7px;
-    color: #fff;
+    color: #000;
     font-size: 17px;
     margin:10px;}
+
+
+
 #imgb1{
 	background-image: url("images/b1.jpg");
 	 background-color: #cccccc;
