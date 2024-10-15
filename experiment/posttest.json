@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What is the relationship between the CPU clock speed and the power consumption of the microcontroller?",
+      "question": "1) What is the relationship between the CPU clock speed and the power consumption of the microcontroller?",
       "answers": {
         "a": "The higher the clock speed, the higher the power consumption",
         "b": "The lower the clock speed, the higher the power consumption",
@@ -14,7 +14,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "What is the maximum clock speed of the PIC18 series microcontroller?",
+      "question": "2) What is the maximum clock speed of the PIC18 series microcontroller?",
       "answers": {
         "a": "64 MHz",
         "b": "8 MHz",
@@ -27,7 +27,7 @@
     },
 	
 	{
-      "question": "What is the function of a crystal oscillator in a microcontroller?",
+      "question": "3) What is the function of a crystal oscillator in a microcontroller?",
       "answers": {
         "a": "To provide a stable clock signal for the microcontroller",
         "b": "To provide power to the microcontroller",
@@ -40,7 +40,7 @@
     },
 	
 	{
-      "question": "Which of the following is not a factor that affects the performance of a microcontroller?",
+      "question": "4) Which of the following is not a factor that affects the performance of a microcontroller?",
       "answers": {
         "a": "CPU clock speed",
         "b": "Amount of RAM",

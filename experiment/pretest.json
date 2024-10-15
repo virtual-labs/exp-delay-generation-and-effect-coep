@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What is the function of a microcontroller?",
+      "question": "1) What is the function of a microcontroller?",
       "answers": {
         "a": "To process data and execute instructions",
         "b": "To provide power to the circuit",
@@ -13,7 +13,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "How does the CPU clock affect the operations of a microcontroller?",
+      "question": "2) How does the CPU clock affect the operations of a microcontroller?",
       "answers": {
         "a": "It determines the speed at which the instructions are executed",
         "b": "It determines the amount of memory available to the microcontroller",
@@ -24,7 +24,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "What is a clock cycle?",
+      "question": "3) What is a clock cycle?",
       "answers": {
         "a": "The time it takes for a microcontroller to execute one instruction",
         "b": "The time it takes for a microcontroller to turn on",
@@ -37,7 +37,7 @@
 	
 	
 	{
-      "question": "How does the clock speed affect the accuracy of the microcontroller's timing functions?",
+      "question": "4) How does the clock speed affect the accuracy of the microcontroller's timing functions?",
       "answers": {
         "a": "The higher the clock speed, the more accurate the timing functions",
         "b": "The lower the clock speed, the more accurate the timing functions",
