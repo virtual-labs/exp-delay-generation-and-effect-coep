@@ -14,12 +14,16 @@ The OSCCON register controls several aspects of the device clock's operation, bo
 
 ### OSCCON: OSCILLATOR CONTROL REGISTER
 
-![8](images/OSCCON.png)
+<center> ![8](images/OSCCON.png) </center>
+
+<center> Image 1 </center>
 
 ![*](images/table1.png)
+
+Image 2
 
 
 ### Schematic
 
 ![*](images/LEC_Puch_button_sinking1.png)
-
+Image 3

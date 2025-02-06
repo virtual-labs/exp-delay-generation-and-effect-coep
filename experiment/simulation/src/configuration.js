@@ -11,7 +11,7 @@
  
 var selection = '<div class="row">'
 	+ '<div class="col-sm-4" id="FreqLbl" >'
-	+ '<label class="labelstyle">Select Clock Frequency :</label>'
+	+ '<label class="labelstyle">Select Clock Frequency:</label>'
 	+ '</div>'
 	+ '<div class="col-sm-6">'
 	+ '<select  class="form-control selectConf" id="fqVal"  style="height:auto;" >'
@@ -31,7 +31,7 @@ var selection = '<div class="row">'
 	
 	+ '<div class="row selectConf">'
 	+ '<div class="col-sm-4">'
-	+ '<label class="labelstyle " > Enter Total Delay(mS) :</label>'
+	+ '<label class="labelstyle " > Enter Total Delay(ms):</label>'
 	+ '</div>'
 	+ '<div class="col-sm-6">'
 	+ '<input type="number" id="timeVAl"  placeholder="Enter Vlaue between 1 to 1000" class=" form-control marginBottom"  disabled >'	
@@ -53,7 +53,7 @@ var selection = '<div class="row">'
 	
 	+ '<div class="row selectConf" >'
 	+ '<div class="col-sm-4">'
-	+ '<label class="labelstyle">Enter ON-OFF Delay(mS) :</label>'
+	+ '<label class="labelstyle">Enter ON-OFF Delay(ms):</label>'
 	+ '</div>'
 	+ '<div class="col-sm-3" >'
 	+ '<input type="number" id="onDly" placeholder="ON Delay"  class=" form-control marginBottom"  disabled >'	
@@ -62,13 +62,23 @@ var selection = '<div class="row">'
 	+ '<input type="number" id="offDly"  placeholder="OFF Delay" class=" form-control marginBottom"  disabled >'	
 	+ '</div>'
 	+ '<div class="col-sm-2">'
-	+ '<button type="button"  class="btn btn-danger btnStyle" id="submitDelayBtn" data-toggle="modal"  disabled><b>SUBMIT</b></button>'
+	+ '<button type="button"  class="btn btn-danger btnStyle" id="submitDelayBtn" data-toggle="modal"  data-target="#myModalcheck"  disabled><b>SUBMIT</b></button>'
+	+ '</div>'
+	+ '</div>'
+	
+	+ '<div class="row selectConf" >'
+	+ '<div class="col-sm-4">'
+	+ '</div>'
+	+ '<div class="col-sm-6">'
+	+ '<p id= "errorMsg" class="errorMsg" hidden></p>'
+	+ ' </div>'
+	+ '<div class="col-sm-2">'
 	+ '</div>'
 	+ '</div>'
 	
 	+ '<div class="row selectConf" >'
 	+ '<div class="col-sm-4" id="pinSelection" >'
-	+ '<label class="labelstyle">Select Pin :</label>'
+	+ '<label class="labelstyle">Select Pin:</label>'
 	+ '</div>'
 	+ '<div class="col-sm-6">'
 	+ '<select  class="form-control selectConf" id="pinName"  style="height:auto;" disabled>'
@@ -89,7 +99,7 @@ var selection = '<div class="row">'
 	
 	+ '<div class="row selectConf" >'
 	+ '<div class="col-sm-4" id="ledSelect" >'
-	+ '<label class="labelstyle">Select LED Configuration :</label>'
+	+ '<label class="labelstyle">Select LED Configuration:</label>'
 	+ '</div>'
 	+ '<div class="col-sm-6">'
 	+ '<select  class="form-control selectConf" id="ledtype"  style="height:auto;" disabled>'
@@ -131,16 +141,16 @@ var selection = '<div class="row">'
 
 + '<div class="row" selectConf>'
 	+ '<div class="col-sm-3" id="buttonDiv">'
-	+ '<button type="button" class="btn btn-danger btnStyle button5" id="generateCode" data-toggle="modal" data-target="#myModal" disabled><b>GENERATE CODE</b></button>'
+	+ '<button type="button" class="btn btn-danger btnStyle button5" id="generateCode" data-toggle="modal" data-target="#myModalcheck" disabled><b>GENERATE<br>CODE</b></button>'
 	+ '</div>'
 	+ '<div class="col-sm-3" id="buttonDiv">'
-	+ '<button type="button" class="btn btn-success btnStyle button4" id="compileCode" data-toggle="modal" data-target="#myModal" disabled><b>COMPILE</b></button>'
+	+ '<button type="button" class="btn btn-success btnStyle button4" id="compileCode" data-toggle="modal" data-target="#myModalcheck" disabled><b>COMPILE<br>CODE</b></button>'
 	+ '</div>'
 	+ '<div class="col-sm-3" id="buttonDiv">'
-	+ '<button type="button" class="btn btn-success btnStyle button4" id="executeCode" data-toggle="modal" data-target="#myModal" disabled ><b>EXECUTE</b></button>'
+	+ '<button type="button" class="btn btn-success btnStyle button4" id="executeCode" data-toggle="modal" data-target="#myModalcheck" disabled ><b>EXECUTE<br>CODE</b></button>'
 	+ '</div>'
 	+ '<div class="col-sm-3" id="buttonDiv">'
-	+ '<button type="button" class="btn btn-primary btnStyle button2" id="downloadCode" data-toggle="modal"  disabled><i class="fa fa-download"></i> <b>DOWNLOAD</b></button>'
+	+ '<button type="button" class="btn btn-primary btnStyle button2" id="downloadCode" data-toggle="modal"  disabled><i class="fa fa-download"></i> <b>DOWNLOAD<br>PROGRAM</b></button>'
 	+ '</div>'
 	+ '</div>'
 	
@@ -160,7 +170,7 @@ var selection = '<div class="row">'
 
 
 	+ ' <!-- Modal -->'
-	+ '<div class="modal fade" id="myModal" role="dialog">'
+	+ '<div class="modal fade" id="myModalcheck" role="dialog">'
 	+ ' <div class="modal-dialog modal-md">'
 	+ '    <div class="modal-content">'
 	+ '     <div class="modal-header">'
@@ -195,8 +205,8 @@ $("#fqVal").change(function(){
 		$("body").css("padding","0px 0px 0px 0px");	
 		enteredfreq =parseInt( $("#fqVal").val());
 		if(enteredfreq<=0){
-			alert("Select Frequency.");
-//			$("#modelMsg").html("<b class='boldTextRed'>Select Frequency.</b>");
+//			alert("Select Frequency.");
+			$("#modelMsg").html("<b class='boldTextRed'>Select Frequency.</b>");
 		}else{		  
 		  $("#timeVAl").prop("disabled",false);			  
  		  $("#fqVal").prop("disabled",true);
@@ -228,8 +238,8 @@ $("#timeVAl").change(function(){
 //			toastr.success("Correct Answer");							
 			}else{	
 //				toastr.warning("Enter Appropraite Value Between 1-1000 ms");
-				alert("Enter Appropraite Value Between 1-1000 ms");			
-//				$("#modelMsg").html("<b class='boldTextRed'>Enter Appropraite Value Between 1-1000 ms</b>");
+				alert("Enter Appropraite Value Between 1-1000ms");			
+//				$("#modelMsg").html("<b class='boldTextRed'>Enter Appropraite Value Between 1-1000ms</b>");
 			}
 	 }	
 	
@@ -239,11 +249,15 @@ console.log("enteredT= "+enteredT);
 var EnteredONdly=0;
 $("#onDly").change(function(){		
 		$("body").css("padding","0px 0px 0px 0px");	
-		EnteredONdly = parseInt($("#onDly").val());
-		if(EnteredONdly==""){
-//			$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value.</b>");	
-			alert("Enter Numeric Value.");
-		}else{							
+		EnteredONdly = parseInt($("#onDly").val()); 
+		if(EnteredONdly=="" || EnteredONdly > enteredT){
+			$("#modelMsg").html("<b class='boldTextRed'>Enter correct value.</b>");	
+			$("#errorMsg").prop("hidden", false);
+			$("#errorMsg").html("Enter correct value");
+//			alert("Enter Numeric Value.");
+		}else{
+			$("#errorMsg").html("");
+			$("#errorMsg").prop("hidden", true);
 			$("#offDly").prop("disabled",false);
 //			toastr.success("Correct Answer");
 		}
@@ -253,10 +267,14 @@ var enteredOffDly=0;
 $("#offDly").change(function(){		
 		$("body").css("padding","0px 0px 0px 0px");	
 		enteredOffDly = parseInt($("#offDly").val());
-		if(enteredOffDly==""){
-//			$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value.</b>");	
-			alert("Enter Numeric Value.");
-		}else{				
+		if(enteredOffDly=="" || enteredOffDly > enteredT){
+			$("#modelMsg").html("<b class='boldTextRed'>Enter correct value</b>");
+			$("#errorMsg").prop("hidden", false);
+			$("#errorMsg").html("Enter correct value");
+//			alert("Enter Numeric Value.");
+		}else{
+			$("#errorMsg").html("");	
+			$("#errorMsg").prop("hidden", true);			
 			$("#submitDelayBtn").prop("disabled",false);
 //			toastr.success("Correct Answer");
 		}
@@ -265,15 +283,18 @@ $("#offDly").change(function(){
 var id1=0;
 var tDelay=EnteredONdly+enteredOffDly;
 console.log("enteredT= "+enteredT+" , tDelay= "+tDelay+", on = "+EnteredONdly+",off = "+enteredOffDly);
-//var tDelay=EnteredONdly+enteredOffDly;
 
+
+
+//var tDelay=EnteredONdly+enteredOffDly;
+var offDelayConsidered=0;
 $("#submitDelayBtn").click(function(){
 	tDelay=parseInt(EnteredONdly)+parseInt(enteredOffDly);
 	console.log("tDelay"+tDelay+"= "+EnteredONdly+" + "+enteredOffDly);	
 		$("body").css("padding","0px 0px 0px 0px");
 		if(enteredOffDly=="" && EnteredONdly==""){
-
-			alert("Enter numeric value.");
+			$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value</b>");	
+//			alert("Enter numeric value.");
 		}else{
 			if (id1 <= 2) {
 				if (tDelay==enteredT){
@@ -285,12 +306,15 @@ $("#submitDelayBtn").click(function(){
 //					toastr.success("Correct Answer");
 
 				} else if (tDelay!=enteredT){
-					alert("Entered ON delay or OFF delay value is incorrect.Try again.");
+//					alert("Entered ON delay or OFF delay value is incorrect.Try again.");
+					$("#modelMsg").html("<b class='boldTextRed'>Entered ON delay or OFF delay value is incorrect.Try again.</b>");
+					
 				}
 			} else if (id1 == 3){
-				
-				alert("Formula: Total Delay = ON Delay + OFF Delay");
-			} else {
+				$("#modelMsg").html("<b class='boldTextBlue'>Formula: Total Delay = ON Delay + OFF Delay</b>");
+									
+//				alert("Formula: Total Delay = ON Delay + OFF Delay");
+			}else {
 				tDelay=EnteredONdly+enteredOffDly	
 				if (tDelay==enteredT) {
 					$("#pinName").prop("disabled",false);
@@ -301,10 +325,13 @@ $("#submitDelayBtn").click(function(){
 //					toastr.success("Correct Answer");
 
 				} else {
-					alert("Correct Answer of ON Delay is "+EnteredONdly+" and OFF Delay is "+enteredOffDly+" ");
-//					$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer of ON Delay is "+EnteredONdly+" and OFF Delay is "+enteredOffDly);
+					for(no1=0;no1<1000;no1++){
+					 offDelayConsidered=enteredT-EnteredONdly;
+					}
+//					alert("Correct Answer of ON Delay is "+EnteredONdly+" and OFF Delay is "+enteredOffDly+" ");
+					$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer of ON Delay is "+EnteredONdly+" and OFF Delay is "+offDelayConsidered);
 				}
-			}
+			} 
 			id1++;
 		}
 });
