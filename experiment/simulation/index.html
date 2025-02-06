@@ -25,6 +25,12 @@
 <style type="text/css">
 
 
+#body {
+		  
+	  overflow-x: hidden;
+}
+
+
 #start, #pause, #reset {
 			margin-right: 10px;
 			padding: 10px;
@@ -41,7 +47,7 @@
 </style>
 </head>
 
-<body bgproperties="fixed">
+<body id="body" bgproperties="fixed">
 
 	<header>
 		<img class="Coeplogo" src='images/COEPlogo.png' /> 
@@ -50,7 +56,7 @@
 	</header>
 
 
-	<div  class="row container-fluid" id="main-div1" style="margin : 5px 1px"">
+	<div  class="row container-fluid" id="main-div1" style="margin : 5px 1px">
 	<div class="col-sm-9" id="buttonDiv">
 	</div>
 	<div class="col-sm-1" id="buttonDiv">
@@ -60,7 +66,7 @@
 	<button type="button" class="btn btn-danger" id="procedure" data-toggle="modal" data-target="#readProcedureModal"><b>READ PROCEDURE</b></button>
 	</div>
 	</div>
-	<div class="row container-fluid" style="margin-top: 10px" id="mainDiv">
+	<div class="row container-fluid" style="margin-top: -20px" id="mainDiv">
 
 		<div class="col-lg-6" id="canvas">
 			<div class="panel panel-primary">
@@ -72,10 +78,10 @@
 <!-- 				<button id="pause" onclick="pause()">Pause</button> -->
 <!-- 				<button id="reset" onclick="reset()">Reset</button> -->
 				</div>
-				<div class="panel-body" id="canvas-div1">
+				<div class="panel-body" style="padding: 0px;" id="canvas-div1">
 				<img src="images/mainpageImg.png" style="width: 100%;height:100%"   class="img-fluid" ></img>
 				</div>
-				<div class="panel-body" id="canvas-div">
+				<div class="panel-body" style="padding: 0px;" id="canvas-div">
 				<div class="row">
 				<div class="col-lg-12">
 <!-- 				<img src="images/mainpageImg.png" style="width: 100%;height:100%"   class="img-fluid" ></img> -->
@@ -133,10 +139,11 @@
 <center id="modelTitle"><b>Configuration</b></center>
  <ol>
 <li>Select clock frequency.</li>
-<li>Enter Total Delay(mS) between 1 mS to 1000 mS.</li>
-<li>Enter ON Delay and OFF Delay in millisecond.</li>
+<li>Enter Total Delay(ms) between 1 ms to 1000 ms.</li>
+<li>Enter ON Delay and OFF Delay in milliseconds.</li>
 <b>NOTE : The Addition of ON Delay and OFF Delay must be same as Total Delay.</b>
 <li>Click on "SUBMIT" button.</li>
+<li>Select the Pin.</li>
 <li>Select LED Configuration.</li>
 <li>Click on "GENERATE CODE" button to generate code.</li>
 <li>Click on "COMPILE" button to compile code.</li>
@@ -147,13 +154,13 @@
 
 <center id="modelTitle"><b>Mimic</b></center>
 <ol>
-<li>Click on selected pin terminal(red circle) and click on anode terminal(red circle) for connection of the selected pin to anode. OR click on anode terminal(red circle) and click on selected pin terminal(red circle) for connect the anode to selected pin.</li>
-<li>Click on cathode terminal(red circle) and click on resistor terminal(red circle) for connection of cathode to resister. OR click on resistor terminal(red circle) and click on cathode terminal(red circle) for connection of resister to cathode.</li>
+<li>Click on selected pin terminal(red circle) and click on anode terminal(red circle) for connection of the selected pin to anode or vice versa.</li>
+<li>Click on cathode terminal(red circle) and click on resistor terminal(red circle) for connection of cathode to resister or vice versa.</li>
 <li>Click on "Check Connection" button.</li>
-<li>If you see alert like "Wrong Connection. Please Try Again." click on "Reset Connection" button and follow step 1,2 and 3.</li>
-<li>If you see alert like "Connection Established Successfully. Now Click on Run Button." Click on "Run" button.</li>
-<li>Output LED is on. now observe the square wave graph.</li>
-<li>Click on "REFRESH" button. to Re-executing the experiment.</li>
+<li>If connection is wrong, click on "Reset Connection" button and follow step 1, 2 and 3.</li>
+<li>If connection is successful, click on "Run" button.</li>
+<li>Output LED is on. Observe the square wave graph.</li>
+<li>Click on "REFRESH" button to re-executing the experiment.</li>
 </ol>
       </div>
       <div class="modal-footer">
@@ -185,9 +192,9 @@ var config = {
 
 var layout = {
   responsive: true,
-  width: 670,
-  height: 300,
-  title: 'delay generation Graph',
+  width: 600,
+  height: 280,
+  title: 'Delay Generation Graph',
   xaxis: {
     range: [0, 10],
     title: 'Time (mS)'
@@ -232,8 +239,8 @@ var config = {
 
 var layout = {
   responsive: true,
-  width: 670,
-  height: 300,
+  width: 600,
+  height: 280,
   title: 'delay generation Graph',
   xaxis: {
     range: [0, 10],

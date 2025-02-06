@@ -60,7 +60,7 @@ var ON_dlyVal=parseInt(onDlySelect);
 var OFF_dlyVal=parseInt(offDlySelect);
 var pinVal=parseInt(pinSelect);
 var diodSelection2=parseInt(LedConSelect);
-
+console.log(timeVal+", "+ON_dlyVal+", "+OFF_dlyVal);
 var interval_plot1=timeVal/1000;
 var offTime1=ON_dlyVal/1000;
 var onTime1=OFF_dlyVal/1000;
@@ -96,7 +96,7 @@ var r=paper.image("images/resistorSymbol.png",x+350,y-45,120, 55);
 var connection_RtoG=paper.path("M"+(x+436)+" "+(y-17.5)+"l 40 0 l 0 52   ").attr({'stroke-width':2});
 var ground= paper.image("images/ground.png",x+450,y+30,50, 21);
 
-var Rcircle=paper.circle(x+363, y-17.5, 5).attr({'fill':' red'});
+var Rcircle=paper.circle(x+363, y-17.5, 5).attr({'fill':' red', 'translation': "4,4"});
 //var Ledcircle2=paper.circle(x+228, y-21, 35);
 
 
@@ -121,12 +121,13 @@ var ground= paper.image("images/ground.png",x+300,y+266,50, 21);
 var groundConnection=paper.path("M"+(x+262)+" "+(y+158)+"l 64 0 l 0 112   ").attr({'stroke-width':3});
 
 resetimg.click(function(){
-	$("#canvas-div").html('');
-//	$("#plot").html("");
-		$("#plot").prop("hidden",false);
-		reset();
+//	$("#canvas-div").html('');
+if(runingFlagValue==1){
+	$("#plot").html("");
+	$("#plot").prop("hidden",true);
+	reset();
+}
 	paper.clear();
-
 	mimic(fqSelect,timeSelect,onDlySelect,offDlySelect,pinSelect);
 	
 })
@@ -708,25 +709,32 @@ anode.click(function(){
 });
 
 var statusFlag=false;
+var statusFlagValue=0;
+var checkStatusClickVal=0;
 checkStatus.click(function(){
-	
-//	console.log("anodeflg"+anodeflg+", pinval="+pinVal+ ",pinname :" + pinName+", RcircleFlag="+RcircleFlag+", cathodFlag="+cathodFlag);
-	if(anodeflg==1 && pinVal==pinName && RcircleFlag==1 && cathodFlag==1){
-		statusFlag=true;
-		
-		
-//		$("#plot").html("");
-//		$("#plot").prop("hidden",false);
-//		start();
-		alert("Connection Established Successfully. Now Click on Run Button.");
-		
-	}else if(RcircleFlag==0 && cathodFlag==0){
-		alert("First Establish Cathode Connection.")
-	}else if(anodeflg!=1 && pinVal!=pinName){
-		alert("Connect the pin.")
+	checkStatusClickVal=1; 
+	if(runingFlagValue==1){
+		alert("Connection status has already been checked.");
 	}else{
-		alert("Wrong Connection. Please Try Again.");
+		//	console.log("anodeflg"+anodeflg+", pinval="+pinVal+ ",pinname :" + pinName+", RcircleFlag="+RcircleFlag+", cathodFlag="+cathodFlag);
+					if(anodeflg==1 && pinVal==pinName && RcircleFlag==1 && cathodFlag==1){
+						statusFlag=true;
+						statusFlagValue=1;
+						
+				//		$("#plot").html("");
+				//		$("#plot").prop("hidden",false);
+				//		start();
+						alert("Connection Established Successfully. Now Click on Run Button.");
+						
+					}else if(RcircleFlag==0 && cathodFlag==0){
+						alert("First Establish Cathode Connection.");
+					}else if(anodeflg!=1 && pinVal!=pinName){
+						alert("Connect the pin.");
+					}else{
+						alert("Wrong Connection. Please Try Again.");
+					}
 	}
+
 });
 
 function toggleVisibility() {
@@ -735,17 +743,28 @@ function toggleVisibility() {
 		
 }
 
+var runingFlagValue=0;
 runimg.click(function(){
-	if(statusFlag==true){
-//		setInterval(toggleVisibility, timeVal*2);
-//		$("#plot").html("");
-		$("#plot").prop("hidden",false);
-		start(interval_plot1,onTime1,offTime1,);
-//		start();
-		
+	if(statusFlagValue==1){
+		statusFlagValue=0;
+//		statusFlagValue=0;
+		if(statusFlag==true){
+			runingFlagValue=1;
+		//		setInterval(toggleVisibility, timeVal*2);
+		//		$("#plot").html("");
+				$("#plot").prop("hidden",false);
+				start(interval_plot1,onTime1,offTime1,);
+		//		start();
+				
+			}else{
+				alert("Please check the connection status first.");
+			}
+	}else if(checkStatusClickVal!=1){
+		alert("Please check the connection status first.");	//You have already run the circuit.
 	}else{
-		alert("Please Check Connection Status.");
+		alert("You have already clicked the Run button.");	//You have already run the circuit.
 	}
+	
 })
 
 function createPopup(x, y, message) {
