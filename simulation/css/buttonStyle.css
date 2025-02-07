@@ -1,0 +1,47 @@
+
+/* demo */
+.button1 {
+    background: linear-gradient(to right,red,orange);
+    transform: all 0.3s ease;
+}
+.button1:hover {
+    background: linear-gradient(to right, orange,red);
+}
+
+
+/* download btn */
+.button2 {
+    background: linear-gradient(to right,#329efc,#0460b0);
+    transform: all 0.3s ease;
+}
+.button2:hover {
+    background: linear-gradient(to right, #0460b0, #329efc);
+}
+
+/* refresh btn blue */
+.button3 {
+    background: linear-gradient(to right,#5ecaf7,#028bc4);
+    transform: all 0.3s ease;
+}
+.button3:hover {
+    background: linear-gradient(to right, #028bc4, #5ecaf7);
+}
+
+/* green Button css */
+.button4 {
+    background: linear-gradient(to right, #4afa39,#0c4d06);
+    transform: all 0.3s ease;
+}
+.button4:hover {
+    background: linear-gradient(to right, #0c4d06, #4afa39);
+}
+
+/* Redbutton css */
+.button5 {
+    background: linear-gradient(to right, #f2685e, #5e0903);
+    transform: all 0.3s ease;
+}
+
+.button5:hover {
+    background: linear-gradient(to right, #5e0903, #f2685e);
+}
