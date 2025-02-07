@@ -53,7 +53,7 @@
     },
 	
 	{
-      "question": "What is the main advantage of using a microcontroller with a higher clock speed?",
+      "question": "5) What is the main advantage of using a microcontroller with a higher clock speed?",
       "answers": {
         "a": "It can execute instructions more quickly",
         "b": "It can store more data",
@@ -66,7 +66,7 @@
     },
 	
 	{
-      "question": "How will you measure the effect of CPU clock speed on microcontroller operations?",
+      "question": "6) How will you measure the effect of CPU clock speed on microcontroller operations?",
       "answers": {
         "a": "By measuring the power consumption of the microcontroller",
         "b": "By measuring the size of the microcontroller",
