@@ -23,5 +23,6 @@ The OSCCON register controls several aspects of the device clock's operation, bo
 ### Schematic
 
 ![*](images/LEC_Puch_button_sinking1.png)
+
 Fig: LED interfacing with microcontroller (Current sourcing)
 
